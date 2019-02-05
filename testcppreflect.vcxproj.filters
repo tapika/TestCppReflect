@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2979b8a0-c533-4cdc-93d0-dae01476a401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pugixml">
+      <UniqueIdentifier>{967bb2b6-9d98-45d0-bec9-22a7edc5180c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CppReflect.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="testcppreflect.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="pugixml\pugixml.cpp">
+      <Filter>pugixml</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CppReflect.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="MacroHelpers.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="SmartPtr.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="TypeTraits.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="pugixml\pugiconfig.hpp">
+      <Filter>pugixml</Filter>
+    </ClInclude>
+    <ClInclude Include="pugixml\pugixml.hpp">
+      <Filter>pugixml</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

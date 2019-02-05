@@ -1,0 +1,19 @@
+
+Copyright 2017 Tarmo Pikaro
+
+This software and associated documentation can be copied, modified, redistributed as free of charge 
+by any person obtaining a copy of this software.
+
+Software provided as is, and does not provide warranty of any kind or fitness for particular purpose.
+
+You must also understand that author used his time to write this software for you, and you could encourage
+free software development by:
+- mention software author somewhere in about box / readme file
+- contact author if you have further development / improvement ideas, or potential bugfixes.
+
+Author encouragement, however, is not mandatory, and left to person's conscience.
+
+This license text should be simplified version of MIT license, containing only necessary license text.
+If you see any problem or incompleteness in this text, feel free to provide more information 
+on how given text can be improved.
+

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<People groupName="Group1">
+	<people>
+		<Person name="Roger" age="37" isAdult="true" eyeColor="255,0,0" />
+		<Person name="Alice" age="27" isAdult="true" eyeColor="0,255,0" />
+		<Person name="Cindy" age="17" isAdult="false" eyeColor="0,0,255" />
+	</people>
+</People>
