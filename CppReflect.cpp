@@ -6,7 +6,7 @@ using namespace pugi;
 //
 //  Serializes class instance to xml node.
 //
-void DataToNode( xml_node& _node, void* pclass, TypeInfo& type )
+void DataToNode( xml_node& _node, void* pclass, CppTypeInfo& type )
 {
     USES_CONVERSION;
     xml_node& node = _node.append_child( CA2W( type.name ) );
@@ -14,7 +14,7 @@ void DataToNode( xml_node& _node, void* pclass, TypeInfo& type )
     for each (FieldInfo fi in type.fields)
     {
         void* p = ((char*)pclass) + fi.offset;
-        TypeInfo* arrayType = nullptr;
+        CppTypeInfo* arrayType = nullptr;
 
         if( !fi.fieldType->GetArrayElementType( arrayType ) )
         {
@@ -49,7 +49,7 @@ struct xml_string_writer : xml_writer
     }
 };
 
-CStringA ToXML_UTF8( void* pclass, TypeInfo& type )
+CStringA ToXML_UTF8( void* pclass, CppTypeInfo& type )
 {
     xml_document doc;
     xml_node decl = doc.prepend_child( pugi::node_declaration );
@@ -62,7 +62,7 @@ CStringA ToXML_UTF8( void* pclass, TypeInfo& type )
     return writer.result;
 }
 
-CStringW ToXML( void* pclass, TypeInfo& type )
+CStringW ToXML( void* pclass, CppTypeInfo& type )
 {
     xml_document doc;
     xml_node decl = doc.prepend_child( pugi::node_declaration );
@@ -80,7 +80,7 @@ CStringW ToXML( void* pclass, TypeInfo& type )
 //  Deserializes xml to class structure, returns true if succeeded, false if fails.
 //  error holds error information if any.
 //
-bool NodeToData( xml_node& node, void* pclass, TypeInfo& type, CStringW& error )
+bool NodeToData( xml_node& node, void* pclass, CppTypeInfo& type, CStringW& error )
 {
     CStringA name = node.name();
 
@@ -93,7 +93,7 @@ bool NodeToData( xml_node& node, void* pclass, TypeInfo& type, CStringW& error )
     for each (FieldInfo fi in type.fields)
     {
         void* p = ((char*)pclass) + fi.offset;
-        TypeInfo* arrayType = nullptr;
+        CppTypeInfo* arrayType = nullptr;
 
         if( !fi.fieldType->GetArrayElementType( arrayType ) )
         {
@@ -128,7 +128,7 @@ bool NodeToData( xml_node& node, void* pclass, TypeInfo& type, CStringW& error )
     return true;
 } //NodeToData
 
-bool FromXml( void* pclass, TypeInfo& type, const wchar_t* xml, CStringW& error )
+bool FromXml( void* pclass, CppTypeInfo& type, const wchar_t* xml, CStringW& error )
 {
     xml_document doc2;
 

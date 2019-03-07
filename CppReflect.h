@@ -1,13 +1,13 @@
 #pragma once
 #include <atlstr.h>
-#include "SmartPtr.h"
 #include "TypeTraits.h"
 #include "MacroHelpers.h"             //DOFOREACH_SEMICOLON
+#include <memory>                     //shared_ptr
 #include <vector>
 
 
 class FieldInfo;
-class TypeInfo
+class CppTypeInfo
 {
 public:
     //  Type (class) name
@@ -29,14 +29,14 @@ public:
     }
 
     int offset;                                     // Field offset within a class instance
-    SmartPtr<TypeTraits> fieldType;                 // Class for field conversion to string / back from string. We must use 'new' otherwise virtual table does not gets initialized.
+    std::shared_ptr<TypeTraits> fieldType;          // Class for field conversion to string / back from string. We must use 'new' otherwise virtual table does not gets initialized.
 };
 
 
 #define PUSH_FIELD_INFO(x)                                      \
     fi.SetName( ARGNAME_AS_STRING(x) );                         \
     fi.offset = offsetof(_className, ARGNAME(x));               \
-    fi.fieldType = new TypeTraitsT< ARGTYPE(x) >();             \
+    fi.fieldType.reset(new TypeTraitsT< ARGTYPE(x) >());        \
     t.fields.push_back(fi);                                     \
 
 /*
@@ -61,9 +61,9 @@ fieldType <> fieldName otherwise intellisense might not work.
     /* typedef is accessable from PUSH_FIELD_INFO define */     \
     typedef className _className;                               \
                                                                 \
-    static TypeInfo& GetType()                                  \
+    static CppTypeInfo& GetType()                               \
     {                                                           \
-        static TypeInfo t;                                      \
+        static CppTypeInfo t;                                   \
         if( t.name.GetLength() ) return t;                      \
         t.name = #className;                                    \
         FieldInfo fi;                                           \
@@ -72,8 +72,8 @@ fieldType <> fieldName otherwise intellisense might not work.
         return t;                                               \
     }                                                           \
 
-CStringA ToXML_UTF8( void* pclass, TypeInfo& type );
-CStringW ToXML( void* pclass, TypeInfo& type );
+CStringA ToXML_UTF8( void* pclass, CppTypeInfo& type );
+CStringW ToXML( void* pclass, CppTypeInfo& type );
 
 //
 //  Serializes class instance to xml string.
@@ -81,18 +81,18 @@ CStringW ToXML( void* pclass, TypeInfo& type );
 template <class T>
 CStringA ToXML_UTF8( T* pclass )
 {
-    TypeInfo& type = T::GetType();
+    CppTypeInfo& type = T::GetType();
     return ToXML_UTF8(pclass, type);
 }
 
 template <class T>
 CStringW ToXML( T* pclass )
 {
-    TypeInfo& type = T::GetType();
+    CppTypeInfo& type = T::GetType();
     return ToXML( pclass, type );
 }
 
-bool FromXml( void* pclass, TypeInfo& type, const wchar_t* xml, CStringW& error );
+bool FromXml( void* pclass, CppTypeInfo& type, const wchar_t* xml, CStringW& error );
 
 //
 //  Deserializes class instance from xml data. pclass must be valid instance where to fetch data.
@@ -100,7 +100,7 @@ bool FromXml( void* pclass, TypeInfo& type, const wchar_t* xml, CStringW& error 
 template <class T>
 bool FromXml( T* pclass, const wchar_t* xml, CStringW& error )
 {
-    TypeInfo& type = T::GetType();
+    CppTypeInfo& type = T::GetType();
     return FromXml(pclass, type, xml, error);
 }
 

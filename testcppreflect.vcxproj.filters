@@ -26,9 +26,6 @@
     <ClInclude Include="MacroHelpers.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="SmartPtr.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="TypeTraits.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -38,5 +35,10 @@
     <ClInclude Include="pugixml\pugixml.hpp">
       <Filter>pugixml</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="pugixml\pugixml.natvis">
+      <Filter>pugixml</Filter>
+    </Natvis>
   </ItemGroup>
 </Project>

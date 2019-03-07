@@ -159,8 +159,10 @@
     <ClInclude Include="MacroHelpers.h" />
     <ClInclude Include="pugixml\pugiconfig.hpp" />
     <ClInclude Include="pugixml\pugixml.hpp" />
-    <ClInclude Include="SmartPtr.h" />
     <ClInclude Include="TypeTraits.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="pugixml\pugixml.natvis" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

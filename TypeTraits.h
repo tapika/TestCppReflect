@@ -2,14 +2,17 @@
 #include <vector>
 #include <string>                       //std::vector
 
-class TypeInfo;
+#pragma warning(push)
+#pragma warning(disable: 4100)          // Unreferenced parameter
+
+class CppTypeInfo;
 //
 //  Base class for performing field conversion to string / from string.
 //
 class TypeTraits
 {
 public:
-    virtual bool GetArrayElementType( TypeInfo*& type )
+    virtual bool GetArrayElementType( CppTypeInfo*& type )
     {
         // Not array type
         return false;
@@ -128,7 +131,7 @@ template <class E>
 class TypeTraitsT< std::vector<E> > : public TypeTraits
 {
 public:
-    virtual bool GetArrayElementType( TypeInfo*& type )
+    virtual bool GetArrayElementType( CppTypeInfo*& type )
     {
         __if_exists(E::GetType)
         {
@@ -210,4 +213,6 @@ public:
             *pclr = RGB( clr[0], clr[1], clr[2] );
     }
 };
+
+#pragma warning(pop)
 

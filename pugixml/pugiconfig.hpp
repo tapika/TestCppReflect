@@ -1,7 +1,7 @@
 /**
- * pugixml parser - version 1.7
+ * pugixml parser - version 1.9
  * --------------------------------------------------------
- * Copyright (C) 2006-2015, by Arseny Kapoulkine (arseny.kapoulkine@gmail.com)
+ * Copyright (C) 2006-2018, by Arseny Kapoulkine (arseny.kapoulkine@gmail.com)
  * Report bugs and download new versions at http://pugixml.org/
  *
  * This library is distributed under the MIT License. See notice at the end
@@ -18,13 +18,13 @@
 #define PUGIXML_WCHAR_MODE
 
 // Uncomment this to enable compact mode
-#define PUGIXML_COMPACT
+// #define PUGIXML_COMPACT
 
 // Uncomment this to disable XPath
-#define PUGIXML_NO_XPATH
+// #define PUGIXML_NO_XPATH
 
 // Uncomment this to disable STL
-#define PUGIXML_NO_STL
+// #define PUGIXML_NO_STL
 
 // Uncomment this to disable exceptions
 // #define PUGIXML_NO_EXCEPTIONS
@@ -49,7 +49,7 @@
 #endif
 
 /**
- * Copyright (c) 2006-2015 Arseny Kapoulkine
+ * Copyright (c) 2006-2018 Arseny Kapoulkine
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -62,7 +62,7 @@
  *
  * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
  * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
  * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
